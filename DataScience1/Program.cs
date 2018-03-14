@@ -6,7 +6,7 @@ namespace DataScience1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            FiletoDictonary.ReadFile();
         }
     }
 }
