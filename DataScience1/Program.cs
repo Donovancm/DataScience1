@@ -15,7 +15,6 @@ namespace DataScience1
             ReadFile();
             PickAlgorithm();
             Console.ReadLine();
-            //ComputeEuclidean();
         }
         public static void ReadFile()
         {
@@ -60,13 +59,19 @@ namespace DataScience1
         public static void PickAlgorithm()
         {
             Console.WriteLine("Pick 1 for Euclidean");
+            Console.WriteLine("Pick 2 for Pearson");
             choice = int.Parse(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
-                    Console.WriteLine("you have chosen Euclidian");
+                    Console.WriteLine("You have chosen Euclidian");
                     Console.WriteLine("The similarity is: " + Euclidean.ComputeEuclidean(dictonary));
+                    Console.ReadLine();
+                    break;
+                case 2:
+                    Console.WriteLine("You have chosen Pearson");
+                    Console.WriteLine("The similarity is: " + Pearson.ComputePearson(dictonary));
                     Console.ReadLine();
                     break;
                 default:

@@ -6,5 +6,6 @@ namespace DataScience1.Methods
 {
     class Cosine
     {
+
     }
 }
