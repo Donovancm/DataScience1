@@ -60,6 +60,7 @@ namespace DataScience1
         {
             Console.WriteLine("Pick 1 for Euclidean");
             Console.WriteLine("Pick 2 for Pearson");
+            Console.WriteLine("Pick 3 for Cosine");
             choice = int.Parse(Console.ReadLine());
 
             switch (choice)
@@ -72,6 +73,11 @@ namespace DataScience1
                 case 2:
                     Console.WriteLine("You have chosen Pearson");
                     Console.WriteLine("The similarity is: " + Pearson.ComputePearson(dictonary));
+                    Console.ReadLine();
+                    break;
+                case 3:
+                    Console.WriteLine("You have chosen Cosine");
+                    Console.WriteLine("The similarity is: " + Cosine.ComputeCosine(dictonary));
                     Console.ReadLine();
                     break;
                 default:
