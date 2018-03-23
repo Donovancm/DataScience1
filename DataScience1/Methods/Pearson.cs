@@ -8,11 +8,11 @@ namespace DataScience1.Methods
     class Pearson : InterfaceMethods
     {
         static double similarity;
-        public static double ComputePearson(Dictionary<int, List<UserInfo>> dictonary)
+        public static double ComputePearson(Dictionary<int, double> User, Dictionary<int, double> User2)
         {
             double distance = 0.0;
-            var fstPick = SelectUser.selectUser(dictonary);
-            var sndPick = SelectUser.selectUser(dictonary);
+            //var fstPick = SelectUser.selectUser(dictonary);
+            //var sndPick = SelectUser.selectUser(dictonary);
 
             double leftUpper = 0.0;
             double rightUpper = 0.0;
@@ -29,20 +29,20 @@ namespace DataScience1.Methods
             double down = 0.0;
 
 
-            foreach (var item1 in fstPick)
+            foreach (var item1 in User)
             {
-                foreach (var item2 in sndPick.Where(x => x.Article == item1.Article))
+                foreach (var item2 in User.Where(x => x.Key == item1.Key))
                 {
-                    leftUpper += (item1.Rating * item2.Rating);
+                    leftUpper += (item1.Value * item2.Value);
                     //rightUpper += (item1.Rating * item2.Rating);
-                    rightUpper1 += item1.Rating;
-                    rightUpper2 += item2.Rating;
-                    leftdown1 += Math.Pow(item1.Rating, 2);
+                    rightUpper1 += item1.Value;
+                    rightUpper2 += item2.Value;
+                    leftdown1 += Math.Pow(item1.Value, 2);
                     //leftdown2 += (Math.Pow(item1.Rating, 2));
-                    leftdown2 += item1.Rating;
-                    rightdown1 += (Math.Pow(item2.Rating, 2));
+                    leftdown2 += item1.Value;
+                    rightdown1 += (Math.Pow(item2.Value, 2));
                     //rightdown2 += (Math.Pow(item2.Rating, 2));
-                    rightdown2 += item2.Rating;
+                    rightdown2 += item2.Value;
                     totalArticles++;
                 }
             }

@@ -7,8 +7,7 @@ namespace DataScience1.Methods
 {
     class Cosine
     {
-        static double distance = 0.0;
-        public double ComputeCosine(Dictionary<int, double> User, Dictionary<int, double> User2)
+        public static double ComputeCosine(Dictionary<int, double> User, Dictionary<int, double> User2)
         {
             double distance = 0.0;
             double upper = 0.0;
@@ -22,6 +21,7 @@ namespace DataScience1.Methods
                 if (!User2.ContainsKey(item.Key))
                 {
                     User2.Add(item.Key, 0.0);
+                    Console.WriteLine(item.Key);
                 }
             }
             foreach (var item in User2)
@@ -29,6 +29,7 @@ namespace DataScience1.Methods
                 if (!User.ContainsKey(item.Key))
                 {
                     User.Add(item.Key, 0.0);
+                    Console.Write(item.Key);
                 }
             }
 
@@ -37,7 +38,7 @@ namespace DataScience1.Methods
             {
                 foreach (var item2 in User2.Where(x => x.Key == item1.Key))
                 {
-                    upper = item1.Value * item2.Value;
+                    upper += item1.Value * item2.Value;
                     lower1 += Math.Pow(item1.Value, 2);
                     lower2 += Math.Pow(item2.Value, 2);
                 }

@@ -9,17 +9,15 @@ namespace DataScience1.Methods
     class Euclidean : InterfaceMethods
     {
         static double similarity;
-        public static double ComputeEuclidean(Dictionary<int, List<UserInfo>> dictonary)
+        public static double ComputeEuclidean(Dictionary<int, double> User, Dictionary<int, double> User2)
         {
             double distance = 0.0;
-            var fstPick = SelectUser.selectUser(dictonary);
-            var sndPick = SelectUser.selectUser(dictonary);
             //Console.WriteLine(distance);
-            foreach (var user1 in fstPick)
+            foreach (var user1 in User)
             {
-                foreach (var user2 in sndPick.Where(x => x.Article == user1.Article))
+                foreach (var user2 in User2.Where(x => x.Key == user1.Key))
                 {
-                    distance += Math.Pow((user1.Rating - user2.Rating), 2);
+                    distance += Math.Pow((user1.Value- user2.Value), 2);
                 }
                 similarity = 1 / (1 + Math.Sqrt(distance));
                 //return similarity;
