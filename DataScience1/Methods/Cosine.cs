@@ -8,32 +8,38 @@ namespace DataScience1.Methods
     class Cosine
     {
         static double distance = 0.0;
-        public static double ComputeCosine(Dictionary<int, List<UserInfo>> dictonary)
+        public double ComputeCosine(Dictionary<int, double> User, Dictionary<int, double> User2)
         {
             double distance = 0.0;
             double upper = 0.0;
             double lower1 = 0.0;
             double lower2 = 0.0;
-            var fstPick = SelectUser.selectUser(dictonary);
-            var sndPick = SelectUser.selectUser(dictonary);
-            //foreach (var user1 in fstPick)
-            //{
-            //    foreach (var user2 in sndPick)
-            //    {
-            //        if (!fstPick.Contains(user1) || !sndPick.Contains(user2)
-            //        {
-            //            dictonary.Add(user1, 0.0);
-            //            dictonary.Add(user2.Rating, 0.0);
-            //        }
-            //    }
-            //}
-            foreach (var item1 in fstPick)
+            //var fstPick = SelectUser.selectUserCosine(User);
+            //var sndPick = SelectUser.selectUserCosine(User2);
+
+            foreach (var item in User)
             {
-                foreach (var item2 in sndPick.Where(x => x.Article == item1.Article))
+                if (!User2.ContainsKey(item.Key))
                 {
-                    upper = item1.Rating * item2.Rating;
-                    lower1 += Math.Pow(item1.Rating, 2);
-                    lower2 += Math.Pow(item2.Rating, 2);
+                    User2.Add(item.Key, 0.0);
+                }
+            }
+            foreach (var item in User2)
+            {
+                if (!User.ContainsKey(item.Key))
+                {
+                    User.Add(item.Key, 0.0);
+                }
+            }
+
+
+            foreach (var item1 in User)
+            {
+                foreach (var item2 in User2.Where(x => x.Key == item1.Key))
+                {
+                    upper = item1.Value * item2.Value;
+                    lower1 += Math.Pow(item1.Value, 2);
+                    lower2 += Math.Pow(item2.Value, 2);
                 }
                 distance = upper / (Math.Sqrt(lower1)  * Math.Sqrt(lower2));
             }
