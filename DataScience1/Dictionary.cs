@@ -27,15 +27,6 @@ namespace DataScience1
                 dictionary[userId].Add(article, rating);
 
             }
-            foreach (var dictpair in dictionary)
-            {
-                Console.WriteLine(dictpair.Key);
-                foreach (var item in dictpair.Value)
-                {
-                    Console.WriteLine(" Article: {0} Rating: {1} ", item.Key, item.Value);
-                }
-                Console.ReadLine();
-            }
             return dictionary;
         }
     }

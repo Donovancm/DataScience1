@@ -21,7 +21,6 @@ namespace DataScience1.Methods
                 if (!User2.ContainsKey(item.Key))
                 {
                     User2.Add(item.Key, 0.0);
-                    Console.WriteLine(item.Key);
                 }
             }
             foreach (var item in User2)
@@ -29,7 +28,6 @@ namespace DataScience1.Methods
                 if (!User.ContainsKey(item.Key))
                 {
                     User.Add(item.Key, 0.0);
-                    Console.Write(item.Key);
                 }
             }
 
